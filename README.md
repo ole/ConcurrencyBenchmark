@@ -43,7 +43,7 @@ Note: the x axis should be called "number of subtasks", not "input size":
 
 Observations:
 
-- The pure computational work takes ~6 ms on this machine (see the flat line). 
-- At 1 subtask (no parallelism), all strategies have effectively the same performance (unsurprising).
-- At the optimal level of parallelism (around 32–64 subtasks), all parallelization strategies are are almost 10× as fast as the single-core benchmark (good).
+- The pure computational work takes ~3 ms on this machine (see the flat line). 
+- At 1 subtask (no parallelism), all strategies have effectively the same performance (as expected).
+- At the optimal level of parallelism (around 32–64 subtasks), all parallelization strategies are are almost 10× as fast as the single-core benchmark (as expected).
 - `DispatchQueue.concurrentPerform` is more efficient than `TaskGroup` and `DispatchQueue.global().async` as the number of subtasks increases.  
