@@ -34,7 +34,7 @@ For more options:
 Note: the x axis should be called "number of subtasks", not "input size":
 
 - The benchmark always performs 10 million computations (this is [the `totalWorkload` variable](https://github.com/ole/ConcurrencyBenchmark/blob/main/Sources/BenchmarkCLI/Main.swift#L5) in the code)
-- If "input size" = 10, the workload is split into 10 "subtasks". E.g. we're calling `concurrentPerform` with 1 million iterations, where each iteration perform 10 million / 10 = 1 million computations. Same for the `TaskGroup` (10 child tasks) and `DispatchQueue.global.async()` (10 work items passed to the global queue).
+- If "input size" = 10, the workload is split into 10 "subtasks". E.g. we're calling `concurrentPerform` with 10 iterations, where each iteration perform 10 million / 10 = 1 million computations. Same for the `TaskGroup` (10 child tasks) and `DispatchQueue.global.async()` (10 work items passed to the global queue) benchmarks.
 - For large input sizes, this creates a very large number of subtasks with each subtask doing very little work. This is why the curves go up as the number of subtasks increases.
 - The "No parallelism (1 core)" task always performs the same number of computations, regardless of input size. This is why the line is flat.
 - We're passing `--amortized false` when rendering the chart to show the total elapsed time. Without this, the chart would depict the time per "subtask", which is meaningless to us because the amount of work per subtask isn't constant. 
